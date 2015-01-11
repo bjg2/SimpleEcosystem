@@ -9,6 +9,12 @@ public class SimpleEcosystem extends PApplet {
 
 	public void setup() {
 		size(displayWidth, displayHeight);
+		
+		try {
+			Configurations.initConfigurations();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}		
 	}
 
 	public void draw() {
