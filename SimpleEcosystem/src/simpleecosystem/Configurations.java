@@ -51,6 +51,16 @@ public class Configurations
 				{					
 					Object obj = valueNode.getNodeValue();
 
+					if(valueNode.getNodeValue().toLowerCase().equals("true"))
+					{
+						obj = true;
+					}
+					
+					if(valueNode.getNodeValue().toLowerCase().equals("false"))
+					{
+						obj = false;
+					}
+					
 					try
 					{
 						obj = Float.parseFloat(valueNode.getNodeValue());
@@ -143,15 +153,15 @@ public class Configurations
 		return ret;
 	}
 	
-	public static Configurations GetMapConfigurations(String mapName)
+	public static Configurations GetConfigurationsByName(String configType, String name)
 	{
-		ArrayList<Configurations> allMapConfigurations = Root.<Configurations>GetAll("Map");
+		ArrayList<Configurations> allConfigurations = Root.<Configurations>GetAll(configType);
 		
-		for(Configurations mapConfigurations : allMapConfigurations)
+		for(Configurations configurations : allConfigurations)
 		{
-			if(mapName.equals(mapConfigurations.<String>Get("Name")))
+			if(name.equals(configurations.<String>Get("Name")))
 			{
-				return mapConfigurations;
+				return configurations;
 			}
 		}
 			

@@ -1,10 +1,8 @@
 package simpleecosystem;
 
 import processing.core.PApplet;
-import processing.core.PVector;
-import world.AMap;
-import world.CircleLakeMap;
-
+import world.Map;
+import world.lakes.CircleLake;
 
 public class SimpleEcosystem extends PApplet
 {
@@ -12,23 +10,22 @@ public class SimpleEcosystem extends PApplet
 	
 	public static SimpleEcosystem Instance;
 	
-	AMap map;
+	Map map;
 
 	public void setup()
 	{
 		Instance = this;
-		
+				
 		size(displayWidth, displayHeight);
 		
 		try
 		{
 			Configurations.Init();
+			map = new Map();
 		} catch (Exception e)
 		{
 			e.printStackTrace();
 		}
-		
-		map = new CircleLakeMap(new PVector(width / 2, height / 2));
 	}
 	
 	private void update()

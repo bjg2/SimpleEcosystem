@@ -1,20 +1,91 @@
 <Root>
-	<Map>
-		<Name>CircleLakeMap</Name>
+	<GroundColor>
+		<Red>200</Red>
+		<Green>200</Green>
+		<Blue>100</Blue>
+	</GroundColor>
+
+	<Lake>
+		<Name>CircleLake</Name>
+		<Enabled>true</Enabled>
 		<InitialR>300</InitialR>
 		<MinR>100</MinR>
 		<MaxR>500</MaxR>
 		<UpdateR>0.1</UpdateR>
 		<DrinkUpdateR>0.01</DrinkUpdateR>
-		<GroundColor>
-			<Red>200</Red>
-			<Green>200</Green>
-			<Blue>100</Blue>
-		</GroundColor>
 		<LakeColor>
 			<Red>100</Red>
 			<Green>100</Green>
 			<Blue>200</Blue>
 		</LakeColor>
-	</Map>
+		<Center>
+			<X>center</X>
+			<Y>center</Y>
+		</Center>
+	</Lake>
+		
+	<Object>
+		<Name>Triangle</Name>
+		<StartR>20</StartR>
+		<GrowthUpdate>-0.01</GrowthUpdate>
+		<GrowthWhenEating>0.02</GrowthWhenEating>
+		<Speed>1</Speed>
+		<DieR>5</DieR>
+		<DivideR>80</DivideR>
+		<Color>
+			<Red>100</Red>
+			<Green>200</Green>
+			<Blue>100</Blue>
+		</Color>
+	</Object>	
+	
+	<SpawnPoint>
+		<ObjectName>Triangle</ObjectName>
+		<Center>
+			<X>150</X>
+			<Y>-150</Y>
+		</Center>
+		<R>100</R>
+		<Color>
+			<Red>100</Red>
+			<Green>200</Green>
+			<Blue>100</Blue>
+			<Alpha>50</Alpha>
+		</Color>
+		<InitialSpawn>5</InitialSpawn>
+		<Enabled>true</Enabled>
+	</SpawnPoint>
+		
+	<Object>
+		<Name>Square</Name>
+		<StartR>20</StartR>
+		<GrowthUpdate>-0.02</GrowthUpdate>
+		<GrowthWhenEating>0.1</GrowthWhenEating>
+		<Speed>2</Speed>
+		<DieR>5</DieR>
+		<DivideR>80</DivideR>
+		<Color>
+			<Red>200</Red>
+			<Green>100</Green>
+			<Blue>100</Blue>
+		</Color>
+	</Object>
+		
+	<SpawnPoint>
+		<ObjectName>Square</ObjectName>
+		<Center>
+			<X>-150</X>
+			<Y>150</Y>
+		</Center>
+		<R>100</R>
+		<Color>
+			<Red>200</Red>
+			<Green>100</Green>
+			<Blue>100</Blue>
+			<Alpha>50</Alpha>
+		</Color>
+		<InitialSpawn>5</InitialSpawn>
+		<Enabled>true</Enabled>
+	</SpawnPoint>
+	
 </Root>
