@@ -11,24 +11,25 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 @SuppressWarnings("unchecked")
-public class Configurations {
-
+// Class that reads configuration file and enables aeasz configuration querying
+public class Configurations
+{
 	// Root configurations
-	public static Configurations singleton;
+	public static Configurations Root;
 	
-	// initializes configurations from default configurations file
-	public static void initConfigurations() throws Exception
+	// Initializes configurations from default configurations file
+	public static void Init() throws Exception
 	{
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
 		Document dom = db.parse("bin\\configurations\\Configurations.xml");
-		singleton = new Configurations(dom.getFirstChild());
+		Root = new Configurations(dom.getFirstChild());
 	}
 	
-	// mapping configName to list of configurations
+	// Mapping configName to list of configurations
 	private HashMap<String, ArrayList<Object>> configurationMap = new HashMap<String, ArrayList<Object>>(); 
 	
-	// constructor	
+	// Constructor	
 	public Configurations(Node rootNode)
 	{
 		NodeList nodeList = rootNode.getChildNodes();
@@ -52,13 +53,7 @@ public class Configurations {
 
 					try
 					{
-						obj = Double.parseDouble(valueNode.getNodeValue());
-					}
-					catch(Exception e) {}
-					
-					try
-					{
-						obj = Integer.parseInt(valueNode.getNodeValue());
+						obj = Float.parseFloat(valueNode.getNodeValue());
 					}
 					catch(Exception e) {}
 					
@@ -72,8 +67,8 @@ public class Configurations {
 		}
 	}
 	
-	// get generic element - Configurations, String, Integer or Double
-	public <T> T Get(String configName) throws Exception
+	// Get generic element for given configName - Configurations, String, or Float
+	public <T> T Get(String configName)
 	{
 		// divide path
 		if(configName.contains("."))
@@ -106,8 +101,9 @@ public class Configurations {
 		
 		return null;
 	}
-	
-	public <T> ArrayList<T> GetAll(String configName) throws Exception
+
+	// Get a list of generic elements for given configName - Configurations, String, or Float
+	public <T> ArrayList<T> GetAll(String configName)
 	{
 		ArrayList<T> ret = new ArrayList<T>();
 
@@ -145,5 +141,20 @@ public class Configurations {
 		}
 		
 		return ret;
+	}
+	
+	public static Configurations GetMapConfigurations(String mapName)
+	{
+		ArrayList<Configurations> allMapConfigurations = Root.<Configurations>GetAll("Map");
+		
+		for(Configurations mapConfigurations : allMapConfigurations)
+		{
+			if(mapName.equals(mapConfigurations.<String>Get("Name")))
+			{
+				return mapConfigurations;
+			}
+		}
+			
+		return null;
 	}
 }

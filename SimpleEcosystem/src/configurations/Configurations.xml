@@ -1,2 +1,20 @@
-<root>
-</root>
+<Root>
+	<Map>
+		<Name>CircleLakeMap</Name>
+		<InitialR>300</InitialR>
+		<MinR>100</MinR>
+		<MaxR>500</MaxR>
+		<UpdateR>0.1</UpdateR>
+		<DrinkUpdateR>0.01</DrinkUpdateR>
+		<GroundColor>
+			<Red>200</Red>
+			<Green>200</Green>
+			<Blue>100</Blue>
+		</GroundColor>
+		<LakeColor>
+			<Red>100</Red>
+			<Green>100</Green>
+			<Blue>200</Blue>
+		</LakeColor>
+	</Map>
+</Root>
